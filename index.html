@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- meta -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- define title -->
+	<title>Queensaver Interface</title>
+	<!-- import style -->
+	<link rel="stylesheet" href="./style.css" />
+	<!-- import vue | TODO: inlcude lates versio of vue core -->
+	<script src="https://unpkg.com/vue@next"></script>
+	<!-- import axios -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-- import chart.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+	<!-- app container -->
+	<div id="app">
+		<div class="header">
+			<img src="./images/queensaver-logo.png" />
+		</div>
+		<div v-if="page == 'dashboard'">
+			<qs-dashboard></qs-dashboard>
+		</div>
+		<div v-else-if="page == 'reg'">
+			<qs-reg @change-page="changePage"></qs-reg>
+		</div>
+		<div v-else>
+			<qs-login @login-success="loginSuccess" @change-page="changePage"></qs-login>
+		</div>
+	</div>
+	<!-- import app -->
+	<script type="text/javascript" src="./main.js"></script>
+	<!-- import components -->
+	<script type="text/javascript" src="./components/dashboard.component.js"></script>
+	<script type="text/javascript" src="./components/login.component.js"></script>
+	<script type="text/javascript" src="./components/reg.component.js"></script>
+	<!-- mount app -->
+	<script>const mountedApp = app.mount('#app')</script>
+</body>
+</html>
