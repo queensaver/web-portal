@@ -216,7 +216,7 @@ app.component('qs-dashboard', {
 		getBoxes: function() {
 			this.bboxes = [];
 			// get bboxes
-			axios.get('https://api.queensaver.com/v1/bboxes', { withCredentials: true, crossDomain: true })
+			axios.get('https://my.queensaver.com/v1/bboxes', { withCredentials: true, crossDomain: true })
 			.then(function (response) {
 				// iterate over all bboxes
 				response.data.bboxes.forEach((value, index) => {
@@ -229,7 +229,7 @@ app.component('qs-dashboard', {
 							bhive_id: hive_value.bhive_id,
 						}
 						// get behive weights
-						axios.get('https://api.queensaver.com/v1/scale?bhive_id=' + hive_value.bhive_id + '&epoch=' +  Math.floor(Date.now()/1000) + '&seconds_in_the_past=' + (60 * 60 * 24 * 1).toString(), { withCredentials: true, crossDomain: true })
+						axios.get('https://my.queensaver.com/v1/scale?bhive_id=' + hive_value.bhive_id + '&epoch=' +  Math.floor(Date.now()/1000) + '&seconds_in_the_past=' + (60 * 60 * 24 * 1).toString(), { withCredentials: true, crossDomain: true })
 						.then(function (response) {
 							// set bhive weights
 							bhives[hive_index].weights = response.data.weights.reverse()
@@ -240,7 +240,7 @@ app.component('qs-dashboard', {
 							console.log(error);
 						});
 						// get behive temps
-						axios.get('https://api.queensaver.com/v1/temperature?bhive_id=' + hive_value.bhive_id + '&epoch=' +  Math.floor(Date.now()/1000) + '&seconds_in_the_past=' + (60 * 60 * 24 * 1).toString(), { withCredentials: true, crossDomain: true })
+						axios.get('https://my.queensaver.com/v1/temperature?bhive_id=' + hive_value.bhive_id + '&epoch=' +  Math.floor(Date.now()/1000) + '&seconds_in_the_past=' + (60 * 60 * 24 * 1).toString(), { withCredentials: true, crossDomain: true })
 						.then(function (response) {
 							// set bhive temps
 							bhives[hive_index].temps = response.data.temperatures.reverse()
@@ -251,7 +251,7 @@ app.component('qs-dashboard', {
 							console.log(error);
 						});
 						// get behive scan
-						axios.get('https://api.queensaver.com/v1/varroa-scan?bhive_id=' + hive_value.bhive_id + '&epoch=' +  Math.floor(Date.now()/1000) + '&seconds_in_the_past=' + (60 * 60 * 24 * 1000).toString(), { withCredentials: true, crossDomain: true })
+						axios.get('https://my.queensaver.com/v1/varroa-scan?bhive_id=' + hive_value.bhive_id + '&epoch=' +  Math.floor(Date.now()/1000) + '&seconds_in_the_past=' + (60 * 60 * 24 * 1000).toString(), { withCredentials: true, crossDomain: true })
 						.then(function (response) {
 							// set bhive scans
 							bhives[hive_index].scans = response.data.varroaScans.reverse()
@@ -456,7 +456,7 @@ app.component('qs-dashboard', {
 			formData.append('bhiveId', bhive_id);
 			formData.append('epoch', Math.floor(Date.now()/1000));
 			formData.append('scan', files);
-			axios.post('https://api.queensaver.com/v1/varroa-scan-image', formData, { withCredentials: true, crossDomain: true })
+			axios.post('https://my.queensaver.com/v1/varroa-scan-image', formData, { withCredentials: true, crossDomain: true })
 			.then(function (response) {
 				this.scanUploadStatus = 'upload successful ...';
 				location.reload();

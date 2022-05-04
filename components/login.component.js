@@ -33,7 +33,7 @@ app.component('qs-login', {
 				// fetch
 				axios({
 					method: 'post',
-					url: 'https://api.queensaver.com/v1/login',
+					url: 'https://my.queensaver.com/v1/login',
 					withCredentials: true,
 					data: data
 				})

@@ -48,7 +48,7 @@ app.component('qs-reg', {
 					'Content-Type': 'application/json'
 				}
 				// do reg
-				axios.post('https://api.queensaver.com/v1/user', data, header)
+				axios.post('https://my.queensaver.com/v1/user', data, header)
 				// success
 				.then(function (response) {
 					console.log(response);
